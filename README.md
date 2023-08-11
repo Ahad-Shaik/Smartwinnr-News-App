@@ -1,6 +1,23 @@
 # NewsApp
+Create one folder in your local drive and follow these steps
+1. Open any terminal like git bash
+2. Type git clone followed by repository link
+3. Once the clone got successful, open the visual studio code.
+4. Open a new terminal and type ng serve and hit enter.
+5. After successful compilation you can see this path:`http://localhost:4200/`
+6. Open it in the browser.
+
+
+kindly ignore all the steps below
+
+
+
+
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
+
 
 ## Development server
 
