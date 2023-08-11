@@ -1,0 +1,82 @@
+<form [formGroup]="myForm" class="responsive-form">
+  <div class="fileds-container">
+    <mat-form-field appearance="fill" class="flex-item">
+      <mat-label>Enter your keyword</mat-label>
+      <input
+        matInput
+        placeholder="Search"
+        formControlName="searchWord"
+        (keyup.enter)="onSearch()"
+        (ngModelChange)="onInput($event)"
+      />
+    </mat-form-field>
+    <mat-form-field class="flex-item">
+      <mat-label>Choose from Date</mat-label>
+      <input
+        matInput
+        formControlName="fromDate"
+        [matDatepicker]="picker"
+        placeholder="Choose a date"
+        
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="flex-item">
+      <mat-label>Choose To Date</mat-label>
+      <input
+        matInput
+        formControlName="toDate"
+        [matDatepicker]="topicker"
+        placeholder="Choose a date"
+        
+      />
+      <mat-datepicker-toggle matSuffix [for]="topicker"></mat-datepicker-toggle>
+      <mat-datepicker #topicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="button-container">
+    <button mat-icon-button matTooltip="Search"  (click)="onSearch()">
+      <mat-icon >search</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Reset" (click)="onReset()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+</form>
+
+<div class="news-sidebar">
+  <h3 class="news-title-head">DAILY NEWS</h3>
+  <div class="news-content">
+    <ul>
+      <li class="box" *ngFor="let data of displayedNewsData">
+        <div class="news-img">
+          <img src="{{ data.urlToImage }}" class="img-responsive" />
+        </div>
+        <div class="news-author">
+          <div class="news-heading" (click)="openUrl(data.url)">
+            <strong matTooltip="Click to open">{{ data.author }}</strong>
+          </div>
+          <div class="news-title">{{ data.title }}</div>
+          <div class="news-description">
+            <small>{{
+              data.description.length > 300
+                ? (data.description | slice : 0 : 300) + "..."
+                : data.description
+            }}</small>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="recordsLength == 0">No Records were found the filtered data.</div>
+<mat-paginator
+  [length]="recordsLength"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="pageChanged($event)"
+  showFirstLastButtons
+></mat-paginator>

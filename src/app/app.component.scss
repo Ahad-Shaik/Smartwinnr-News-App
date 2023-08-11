@@ -1,0 +1,26 @@
+.mat-tab-label:hover {
+    background-color: rgb(95, 245, 95);
+    color: rgb(191, 211, 76);
+    cursor: pointer;
+  }
+  
+  .mat-tab-label-active {
+    background-color: #ff52cb;
+    color: rgb(101, 30, 148);
+  }
+
+  .mat-tab-group {
+    background-color: #8780e0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .mat-tab-header {
+    background-color: #333;
+    color: rgb(161, 11, 11);
+    font-family: Arial, sans-serif;
+  }
+  
+  .mat-mdc-tab-header{
+    background-color: #8780e0;
+  }
